@@ -61,10 +61,7 @@ function CursedBonesRemoveSpikesGrid(_)
                     elseif gridE:ToDoor() ~= nil then
                         if gridE:ToDoor().TargetRoomType == RoomType.ROOM_CURSE or 
                         gridE:ToDoor().CurrentRoomType == RoomType.ROOM_CURSE then
-                            --Isaac.DebugString(tostring(gridE:GetSprite():GetAnimation()))
                             gridE.VarData = 1
-                            gridE.GetSprite():GetFilename()
-                            --gridE:GetSprite():ReplaceSpritesheet(0, "door_04_selfsacrificeroomdoor.png")
                         end
                     elseif gridE:ToSpikes() ~= nil then
                         if gridE:GetType() == GridEntityType.GRID_SPIKES and

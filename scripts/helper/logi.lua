@@ -8,17 +8,6 @@ function angleComp(alpha, beta)
 end
 
 function directionToVectorAngle(directionValue, player)
-    --if directionValue == 0 then
-    --    return 180
-    --elseif directionValue == 1 then
-    --    return -90
-    --elseif directionValue == 2 then
-    --    return 0
-    --elseif directionValue == 3 then
-    --    return 90 
-    --elseif directionValue == -1 and player:GetLastDirection() ~= nil then
-    --    return player:GetLastDirection():GetAngleDegrees()
-    --end
     if directionValue ~= -1 then
         return 180 - (((math.min(directionValue, 1) * 4) - directionValue) * 90)
     end

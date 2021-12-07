@@ -1,0 +1,39 @@
+{
+    "Lua.diagnostics.globals": [
+        "Game",
+        "Isaac",
+        "CollectibleType",
+        "ModCallbacks",
+        "CacheFlag",
+        "EntityLaser",
+        "RegisterMod",
+        "Vector",
+        "angleComp",
+        "ternary",
+        "EntityRef",
+        "Color",
+        "directionToVectorAngle",
+        "vectorAngleConvert",
+        "EntityFlag",
+        "DamageFlag",
+        "PickupVariant",
+        "bitmaskToHearts",
+        "maskToHearts",
+        "maskToNumber",
+        "RoomType",
+        "EntityType",
+        "EffectVariant",
+        "HeartSubType",
+        "RoomShape",
+        "GridEntityType",
+        "LevelStage",
+        "getn",
+        "getn__",
+        "highestIndexTable",
+        "EntityPartition",
+        "FindInRadius"
+    ],
+    "Lua.diagnostics.disable": [
+        "redundant-value"
+    ]
+}
