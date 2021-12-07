@@ -1,7 +1,0 @@
-<items version="1" gfxroot="gfx/items/">
-    <passive id="1"  name="Ectoplasm"       description="Who you gonna call?"   gfx="ectoplasm.png"         cache="damage speed flying" />
-    <passive id="2"  name="Stare"           description="Geeeee"                gfx="stare.png"             cache="" />
-    <passive id="3"  name="Demonic Resolve" description="Chūnibyō within"       gfx="demonic_resolve.png"   cache="damage" />
-    <passive id="4"  name="Cursed Bones"    description="The power the woman at the store told you about" gfx="cursed_bones" cache="" />
-    
-</items>
