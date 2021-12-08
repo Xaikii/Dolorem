@@ -31,7 +31,10 @@
         "getn__",
         "highestIndexTable",
         "EntityPartition",
-        "FindInRadius"
+        "FindInRadius",
+        "RNG",
+        "Random",
+        "TearVariant"
     ],
     "Lua.diagnostics.disable": [
         "redundant-value"

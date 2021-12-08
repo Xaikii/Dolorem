@@ -4,6 +4,7 @@ local darkestSide = Isaac.GetItemIdByName("Darkest Side")
 
 local blackHearts = 0
 local numSide = 0
+local r=0
 
 function DarkestSidePostPlayer(_, player)
     numSide = player:GetCollectibleNum(darkestSide)
@@ -13,13 +14,20 @@ function DarkestSidePostPlayer(_, player)
 
         DarkestSideUpdateStats(_,player)
     end
+
+    if r<numSide then
+
+        DarkestSideUpdateStats(_, player)
+        
+        r = r + 1 
+    end
 end
 
 function DarkestSideStatCache(_, player, flag)
-    local numEctoplasm = player:GetCollectibleNum(darkestSide)
+    local numSide = player:GetCollectibleNum(darkestSide)
 
     if flag == CacheFlag.CACHE_DAMAGE then
-        player.Damage = (player.Damage + 1.6 * numSide) * (1 + 0.1 * numSide * player:GetBlackHearts())
+        player.Damage = (player.Damage + 1.6 * numSide)  * (1 + 0.1 * numSide * blackHearts)
     elseif flag == CacheFlag.CACHE_SPEED then
         player.MoveSpeed = 1.0
     end

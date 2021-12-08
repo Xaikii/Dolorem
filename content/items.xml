@@ -4,5 +4,6 @@
     <passive id="3"  name="Demonic Resolve" description="Chūnibyō within"       gfx="demonic_resolve.png"   cache="damage" />
     <passive id="4"  name="Cursed Bones"    description="The power the woman at the store told you about" gfx="cursed_bones.png" cache="" />
     <passive id="5"  name="Darkest Side"    description="Luke..."               gfx="darkest_side.png"      cache="damage speed" />
+    <passive id="6"  name="Calcium"         description="Tough Bones"           gfx="calcium.png"           cache="damage speed" />
     
 </items>
