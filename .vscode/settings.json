@@ -34,7 +34,14 @@
         "FindInRadius",
         "RNG",
         "Random",
-        "TearVariant"
+        "TearVariant",
+        "TearFlags",
+        "WeaponType",
+        "TrinketType",
+        "GetPtrHash",
+        "PillEffect",
+        "PillColor",
+        "UseFlag"
     ],
     "Lua.diagnostics.disable": [
         "redundant-value"

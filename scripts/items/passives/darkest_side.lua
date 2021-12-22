@@ -26,9 +26,9 @@ end
 function DarkestSideStatCache(_, player, flag)
     local numSide = player:GetCollectibleNum(darkestSide)
 
-    if flag == CacheFlag.CACHE_DAMAGE then
+    if flag == CacheFlag.CACHE_DAMAGE and player:HasCollectible(darkestSide) then
         player.Damage = (player.Damage + 1.6 * numSide)  * (1 + 0.1 * numSide * blackHearts)
-    elseif flag == CacheFlag.CACHE_SPEED then
+    elseif flag == CacheFlag.CACHE_SPEED and player:HasCollectible(darkestSide) then
         player.MoveSpeed = 1.0
     end
 end

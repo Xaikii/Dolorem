@@ -15,9 +15,9 @@ end
 function EctoplasmStatCache(_, player, flag)
     local numEctoplasm = player:GetCollectibleNum(ectoplasm)
 
-    if flag == CacheFlag.CACHE_DAMAGE then
+    if flag == CacheFlag.CACHE_DAMAGE and player:HasCollectible(ectoplasm) then
         player.Damage = player.Damage + 0.3 * numEctoplasm
-    elseif flag == CacheFlag.CACHE_SPEED then
+    elseif flag == CacheFlag.CACHE_SPEED and player:HasCollectible(ectoplasm) then
         player.MoveSpeed = player.MoveSpeed * (0.8^numEctoplasm)
     elseif flag == CacheFlag.CACHE_FLYING and player:HasCollectible(ectoplasm) then
         player.CanFly = true

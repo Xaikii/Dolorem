@@ -24,9 +24,7 @@ function StarePostPlayer(_, player)
             if entity.Type ~= EntityType.ENTITY_PLAYER and entity:IsVulnerableEnemy() then
                 local dist = player.Position:Distance(entity.Position) --returns a float
 
-                Isaac.DebugString(tostring(player.TearRange))
 
-                --if dist < distanceBase*(player.TearRange/40) then
                 if dist < (player.TearRange*0.8) then
 
                     local vecDirection = entity.Position - player.Position
