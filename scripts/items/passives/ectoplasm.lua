@@ -1,8 +1,9 @@
 local ectoplasm = Isaac.GetItemIdByName("Ectoplasm")
 local r = 0
+local numEctoplasm = 0
 
 function EctoplasmPostPlayer(_, player)
-    local numEctoplasm = player:GetCollectibleNum(ectoplasm)
+    numEctoplasm = player:GetCollectibleNum(ectoplasm)
 
     if r<numEctoplasm then
         player:AddSoulHearts(2)
@@ -13,7 +14,7 @@ function EctoplasmPostPlayer(_, player)
 end
 
 function EctoplasmStatCache(_, player, flag)
-    local numEctoplasm = player:GetCollectibleNum(ectoplasm)
+    numEctoplasm = player:GetCollectibleNum(ectoplasm)
 
     if flag == CacheFlag.CACHE_DAMAGE and player:HasCollectible(ectoplasm) then
         player.Damage = player.Damage + 0.3 * numEctoplasm

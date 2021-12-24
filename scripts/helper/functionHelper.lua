@@ -20,14 +20,8 @@ function GetShopItems(_)
         if pickup:IsShopItem() == true then
             items[num] = pickup, pickup.ShopItemId
             num = num + 1
-            --Isaac.DebugString(tostring(pickup.ShopItemId))
         end
     end
-    --for key, value in pairs(items) do
-    --    Isaac.DebugString(tostring(key))
-    --    Isaac.DebugString(tostring(value))
-    --end
-    --Isaac.DebugString(tostring(#items))
     return items
 end
 

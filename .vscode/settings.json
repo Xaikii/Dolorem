@@ -41,7 +41,12 @@
         "GetPtrHash",
         "PillEffect",
         "PillColor",
-        "UseFlag"
+        "UseFlag",
+        "enumFil",
+        "clearTable",
+        "nestCheck",
+        "boolToNumber",
+        "EntyityRef"
     ],
     "Lua.diagnostics.disable": [
         "redundant-value"

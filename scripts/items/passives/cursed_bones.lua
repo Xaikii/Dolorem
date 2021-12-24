@@ -51,7 +51,7 @@ function CursedBonesRemoveSpikesGrid(_)
         local player = Isaac.GetPlayer(i)
 
         if player:HasCollectible(cursedBones) then
-            for i=0, GetPossibleGrindIndiciesFromRoom(roomShape) do
+            for i=0, GetPossibleGridIndiciesFromRoom(roomShape) do
         
                 local gridE = room:GetGridEntity(i)
         
