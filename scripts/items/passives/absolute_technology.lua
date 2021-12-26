@@ -1,3 +1,5 @@
+require('scripts.helper.roomHelper')
+
 local abTech = Isaac.GetItemIdByName("Absolute Technology")
 local rAbTech = 0
 local numAbTech
@@ -6,7 +8,7 @@ local laser
 function AbTechPostPlayer(_, player)
     numAbTech = player:GetCollectibleNum(abTech)
 
-    laser.Position = player.Position
+    --laser.Position = player.Position
     --laser = player:FireTechXLaser(player.Position, Vector(0,0), 100.0, player, 1)
     --laser.DisableFollowParent = false
     --laser.Timeout = 20
@@ -24,7 +26,7 @@ function AbTechStatCache(_, player, flag)
 end
 
 function AbTechNewRoom()
-    for i = 1, Game():GetNumPlayers() do
+    --[[for i = 1, Game():GetNumPlayers() do
         local player = Isaac.GetPlayer(i)
 
         --laser = player:FireTechXLaser(player.Position, Vector(0,0), 100, player, 1)
@@ -37,13 +39,22 @@ function AbTechNewRoom()
         --laser:SetOneHit(true)
         --laser.SampleLaser = true
         --laser.OneHit = true
-    end
+    end]]
 end
 
 function AbTechCollision(_, tear, collider, low--[[bool]])
-    if collider.Type == EntityType.ENTITY_TEAR and EntyityRef(collider).Entity.SpawnerType ~= EntityType.ENTITY_PLAYER  then
-        
+    --Isaac.DebugString(tostring(collider:ToLaser()))
+    --[[Isaac.DebugString(tostring(tear:ToLaser()))
+    Isaac.DebugString(tostring(collider.SpawnerType == EntityType.ENTITY_PLAYER))
+    Isaac.DebugString(tostring(tear.SpawnerType == EntityType.ENTITY_PLAYER))
+    if tear.Type == EntityType.ENTITY_TEAR and EntityRef(tear).Entity.SpawnerType ~= EntityType.ENTITY_PLAYER  then
+        if collider.SpawnerEntity:ToPlayer() ~= nil then
+            local player = collider.SpawnerEntity
+            local ent = GetClosestEnemy(player)
+            EntityLaser.ShootAngle(1, player.Position, (player.Position + ent.Position):Normalized():GetAngleDegrees(), 5, Vector(0,0), player)
+        end
     end
+    --]]
 end
 
 DoloremMod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, AbTechPostPlayer)

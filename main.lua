@@ -1,6 +1,7 @@
 DoloremMod = RegisterMod("Dolorem", 1)
 
 require('scripts.helper.enumFil')
+require('scripts.helper.roomHelper')
 
 require('scripts.items.passives.ectoplasm')
 require('scripts.items.passives.stare')
@@ -10,6 +11,27 @@ require('scripts.items.passives.darkest_side')
 require('scripts.items.passives.calcium')
 require('scripts.items.passives.gorger')
 require('scripts.items.passives.absolute_technology')
+
+--roomHelper
+function RoomHelperEnemyRefresh()
+    local entities = Isaac.GetRoomEntities()
+    local enemies = {}
+    RoomEntities["All"] = entities
+    for index, value in ipairs(entities) do
+        if value:IsVulnerableEnemy() and not value:IsDead() then
+            local wasFound = false
+            for index1, value1 in ipairs(enemies) do
+                if GetPtrHash(value1) == GetPtrHash(value) then
+                    wasFound = true
+                end
+            end
+            if not wasFound then
+                table.insert(enemies, value)
+            end
+        end
+    end
+    RoomEntities["Enemies"] = enemies
+end
 
 --Gorger
 AddToTable(DolItemList, "Gorger", "Common", "ToAdd", CollectibleType.COLLECTIBLE_BREAKFAST)
@@ -43,4 +65,15 @@ function DoloremGameStart()
     
 end
 
+function DoloremPostEntityRemove()
+    RoomHelperEnemyRefresh()
+end
+
+function DoloremPostUpdate()
+    if math.fmod(Game():GetFrameCount(),30)  then
+        RoomHelperEnemyRefresh()
+    end
+end
+
 DoloremMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, DoloremGameStart)
+DoloremMod:AddCallback(ModCallbacks.MC_POST_ENTITY_REMOVE, DoloremPostEntityRemove)

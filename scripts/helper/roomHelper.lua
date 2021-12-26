@@ -1,3 +1,9 @@
+RoomEntities = {
+    All={},
+    Enemy={}
+}
+
+
 function GetPossibleGridIndiciesFromRoom(room)
     if room == RoomShape.ROOMSHAPE_1x1 or 
     room == RoomShape.ROOMSHAPE_IH or 
@@ -56,23 +62,16 @@ function IsShopKeeperInRoom(_)
     return keeperFound, i
 end
 
-function GetClosestEnemy(player)
-    local entities = Isaac.GetRoomEntities()
-    local validEntities = {}
+function GetClosestEnemy(player)--returns an Entity
     local indices = 0
     local currentDistance = 200000.0
+    local enemies = RoomEntities["Enemy"]
 
-    --ToDo: Create a Runtime table of alive vulnerable enemies in current Room and access thus
-    for index, value in ipairs(entities) do
-        if value:IsVulnerableEnemy() and not value:IsDead()then
-            table.insert(validEntities, value)
-        end
-    end
-    for index, value in ipairs(validEntities) do
+    for index, value in ipairs(enemies) do
         if player.Position:Distance(value.Position) < currentDistance then
             indices = index
         end
     end
 
-    return validEntities[indices]
+    return enemies[indices]
 end

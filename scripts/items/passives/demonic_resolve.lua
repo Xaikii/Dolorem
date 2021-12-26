@@ -39,7 +39,7 @@ function DemonicResolveStatCache(_, player, flag)
 end
 
 function DemonicResolveFreeDevilDeal(_)
-    
+    --ToDo: Once a run
     local hasNotRun = true
 
     for i=0, Game():GetNumPlayers() -1 do
