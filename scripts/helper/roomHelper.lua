@@ -1,6 +1,7 @@
 RoomEntities = {
     All={},
-    Enemy={}
+    Enemy={},
+    EnemyTears={}
 }
 
 
@@ -70,6 +71,7 @@ function GetClosestEnemy(player)--returns an Entity
     for index, value in ipairs(enemies) do
         if player.Position:Distance(value.Position) < currentDistance then
             indices = index
+            currentDistance = player.Position:Distance(value.Position)
         end
     end
 

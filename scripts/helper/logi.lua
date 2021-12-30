@@ -41,7 +41,7 @@ function clearTable(tableC)
     return t
 end
 
-local function bool_to_number(value)
+function bool_To_Number(value)
     return value == true and 1 or value == false and 0
 end
 

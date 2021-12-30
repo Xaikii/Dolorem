@@ -16,6 +16,7 @@ require('scripts.items.passives.absolute_technology')
 function RoomHelperEnemyRefresh()
     local entities = Isaac.GetRoomEntities()
     local enemies = {}
+    local projectiles = {}
     RoomEntities["All"] = entities
     for index, value in ipairs(entities) do
         if value:IsVulnerableEnemy() and not value:IsDead() then
@@ -29,8 +30,20 @@ function RoomHelperEnemyRefresh()
                 table.insert(enemies, value)
             end
         end
+        if value:ToProjectile() ~= nil  then
+            local wasFound = false
+            for index1, value1 in ipairs(projectiles) do
+                if GetPtrHash(value1) == GetPtrHash(value) then
+                    wasFound = true
+                end
+            end
+            if not wasFound then
+                table.insert(projectiles, value)
+            end
+        end
     end
-    RoomEntities["Enemies"] = enemies
+    RoomEntities["Enemy"] = enemies
+    RoomEntities["EnemyTears"] = projectiles
 end
 
 --Gorger
@@ -55,6 +68,9 @@ end
 
 
 function DoloremGameStart()
+    --roomHelper
+    RoomHelperEnemyRefresh()
+
     --Gorger
     InitTable(DolItemList, "Gorger", "Common", "List", "ToAdd")
     InitTable(DolItemList, "Gorger", "Rare", "List", "ToAdd")
@@ -65,15 +81,20 @@ function DoloremGameStart()
     
 end
 
-function DoloremPostEntityRemove()
-    RoomHelperEnemyRefresh()
-end
-
 function DoloremPostUpdate()
     if math.fmod(Game():GetFrameCount(),30)  then
         RoomHelperEnemyRefresh()
     end
 end
 
+function DoloremPostRoom()
+    RoomHelperEnemyRefresh()
+end
+
+function DoloremPostEntityRemove()
+    RoomHelperEnemyRefresh()
+end
+
 DoloremMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, DoloremGameStart)
+DoloremMod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, DoloremPostRoom)
 DoloremMod:AddCallback(ModCallbacks.MC_POST_ENTITY_REMOVE, DoloremPostEntityRemove)

@@ -46,7 +46,9 @@
         "clearTable",
         "nestCheck",
         "boolToNumber",
-        "EntyityRef"
+        "EntyityRef",
+        "bool_to_number",
+        "bool_To_Number"
     ],
     "Lua.diagnostics.disable": [
         "redundant-value"
